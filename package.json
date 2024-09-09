@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "node-ovsx-sign": "^1.2.0"
+  }
+}

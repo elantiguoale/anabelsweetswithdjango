@@ -25,7 +25,8 @@ SECRET_KEY = 'django-insecure--z)rip-^5*sd+5*nnkm3&)op%vzi1$f)rap5h(rpk@$r2su#!-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['8000-elantiguoal-anabelsweet-lpiv62gd258.ws-eu116.gitpod.io']
+ALLOWED_HOSTS = ['8000-elantiguoal-anabelsweet-lpiv62gd258.ws-eu116.gitpod.io',
+                'anabelsweets-91c553d97f87.herokuapp.com']
 
 
 # Application definition
@@ -80,10 +81,6 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
-
-CSRF_TRUSTED_ORIGINS = [
-    'http://8000-elantiguoal-anabelsweet-lpiv62gd258.ws-eu116.gitpod.io'
-]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
