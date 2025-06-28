@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-STATUS = ((0, "Draft"), (1, "Published"))
+STATUS = (("draft", "Draft"), ("published", "Published"))
 
 # Create your models here.
 
@@ -13,7 +13,7 @@ class Post(models.Model):
     )
     content = models.TextField(default="")
     created_on = models.DateTimeField(auto_now_add=True)
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.CharField(max_length=10, choices=STATUS, default="draft")
     excerpt = models.TextField(blank=True)
 
     class Meta:
