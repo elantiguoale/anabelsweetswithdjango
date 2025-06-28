@@ -200,6 +200,9 @@ main {
 /*Gallery picture formats*/
 #gallery {
     margin-top: 67px;
+    background-color: #FFE5EC;
+    border-radius: 10px;
+    padding-bottom: 30px;
 }
 
 #photos {
@@ -397,7 +400,13 @@ button:hover {
     font-size: 3rem;
     font-weight: bold;
     margin: 40px 0 30px 0;
-    color: #FFD700; /* Victory gold */
-    text-shadow: 2px 2px 8px #bfa100, 0 0 10px #fff8dc;
+    color: #e6b800; /* Darker gold */
+    text-shadow:
+        -2px -2px 0 #000,
+         2px -2px 0 #000,
+        -2px  2px 0 #000,
+         2px  2px 0 #000,
+         0px  2px 4px #bfa100,
+         0 0 10px #fff8dc;
     letter-spacing: 2px;
 }
