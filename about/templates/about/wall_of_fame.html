@@ -9,10 +9,8 @@
     <div id="photos">
         {% for cake in cakes %}
             <div class="cake-item">
-                <img src="{{ cake.image.url }}" alt="{{ cake.cake_name }} by {{ cake.user.username }}">
+                <img src="{{ cake.image.url }}" alt="{{ cake.cake_name }}">
                 <h4>{{ cake.cake_name }}</h4>
-                <p>by {{ cake.user.username }}</p>
-                <p>{{ cake.description }}</p>
             </div>
         {% empty %}
             <p>No cakes have been submitted yet. Be the first!</p>
