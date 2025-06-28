@@ -3,8 +3,8 @@ from django.shortcuts import render, redirect
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from .models import CakeSubmission
-from .forms import CakeSubmissionForm
+from .models import CakeSubmission, Order
+from .forms import CakeSubmissionForm, OrderForm
 
 # Create your views here.
 def about(request):
@@ -33,3 +33,25 @@ def submit_cake(request):
         form = CakeSubmissionForm()
     
     return render(request, 'about/submit_cake.html', {'form': form})
+
+def order_cake(request):
+    """
+    View for customers to place cake orders
+    """
+    if request.method == 'POST':
+        form = OrderForm(request.POST)
+        if form.is_valid():
+            order = form.save()
+            messages.success(
+                request, 
+                f'Thank you for your order, {order.customer_name}! '
+                f'We\'ve received your request for a {order.get_cake_flavor_display()} cake. '
+                f'We\'ll contact you at {order.customer_email} within 24 hours to confirm your order and provide a quote.'
+            )
+            return redirect('home')
+        else:
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        form = OrderForm()
+    
+    return render(request, 'about/order.html', {'form': form})
