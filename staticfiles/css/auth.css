@@ -4,12 +4,12 @@ body {
     font-family: Arial, sans-serif;
     background: #FFE5EC;
     margin: 0;
-    padding: 20px;
+    padding: 0;
 }
 
 .container {
     max-width: 400px;
-    margin: 50px auto;
+    margin: 120px auto 50px auto;
     padding: 30px;
     background: white;
     border-radius: 10px;
