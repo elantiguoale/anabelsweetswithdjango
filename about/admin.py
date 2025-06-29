@@ -35,9 +35,9 @@ class CakeSubmissionAdmin(admin.ModelAdmin):
 
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('id', 'customer_name', 'cake_flavor', 'event_date', 'status', 'is_urgent')
+    list_display = ('id', 'customer_name', 'customer_email', 'customer_phone', 'cake_flavor', 'event_date', 'status', 'is_urgent')
     list_filter = ('status', 'cake_flavor', 'event_type', 'order_date')
-    search_fields = ('customer_name', 'customer_email', 'customer_phone', 'design_description')
+    search_fields = ('customer_name', 'customer_email', 'customer_phone', 'design_description', 'special_requests')
     readonly_fields = ('order_date', 'updated_date')
     actions = ['confirm_orders', 'mark_in_progress', 'mark_ready', 'mark_completed', 'mark_cancelled']
     
@@ -46,12 +46,12 @@ class OrderAdmin(admin.ModelAdmin):
             'fields': ('customer_name', 'customer_email', 'customer_phone')
         }),
         ('Order Details', {
-            'fields': ('cake_flavor', 'custom_flavor_description', 'cake_size', 'servings')
+            'fields': ('cake_flavor', 'custom_flavor_description', 'cake_size')
         }),
         ('Design & Event', {
             'fields': ('design_description', 'special_requests', 'event_date', 'event_type')
         }),
-        ('Pricing & Status', {
+        ('Pricing & Status (SEK)', {
             'fields': ('estimated_price', 'final_price', 'status')
         }),
         ('Timestamps', {

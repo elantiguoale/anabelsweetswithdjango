@@ -33,10 +33,57 @@
         </div>
     </div>
     
-    <a href="{% url 'logout' %}" class="btn-auth">Logout</a>
+    <div class="profile-actions">
+        <a href="{% url 'my_orders' %}" class="btn-auth btn-orders">View My Orders</a>
+        <a href="{% url 'logout' %}" class="btn-auth btn-logout">Logout</a>
+    </div>
     
     <div class="auth-links">
         <p><a href="{% url 'home' %}">Back to Home</a></p>
     </div>
 </div>
+
+<style>
+.profile-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin: 20px 0;
+    flex-wrap: wrap;
+}
+
+.btn-orders {
+    background-color: #FB6F92;
+    color: white;
+    border: 2px solid #FB6F92;
+}
+
+.btn-orders:hover {
+    background-color: #e55a7b;
+    border-color: #e55a7b;
+}
+
+.btn-logout {
+    background-color: transparent;
+    color: #FB6F92;
+    border: 2px solid #FB6F92;
+}
+
+.btn-logout:hover {
+    background-color: #FB6F92;
+    color: white;
+}
+
+@media (max-width: 480px) {
+    .profile-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .profile-actions .btn-auth {
+        width: 100%;
+        max-width: 200px;
+    }
+}
+</style>
 {% endblock %} 

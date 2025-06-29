@@ -318,12 +318,16 @@ button:hover {
     #menu {
         display: flex;
         background-color: #FB6F92;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 0.5rem;
     }
 
     #menu > li {
-        padding-left: 1rem;
-        font-size: 150%;
-        
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        font-size: 130%;
+        white-space: nowrap;
     }
 
     .nav-toggle-label {
@@ -409,4 +413,12 @@ button:hover {
          0px  2px 4px #bfa100,
          0 0 10px #fff8dc;
     letter-spacing: 2px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+#welcome, .wall-of-fame-title, h1, h2.site-title {
+    font-family: "Dancing Script", cursive, sans-serif;
 }

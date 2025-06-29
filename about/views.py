@@ -55,3 +55,16 @@ def order_cake(request):
         form = OrderForm()
     
     return render(request, 'about/order.html', {'form': form})
+
+@login_required
+def my_orders(request):
+    """
+    View for authenticated users to see their order history
+    """
+    # Get orders where the customer email matches the logged-in user's email
+    user_orders = Order.objects.filter(customer_email=request.user.email).order_by('-order_date')
+    
+    return render(request, 'about/my_orders.html', {
+        'orders': user_orders,
+        'user_email': request.user.email
+    })

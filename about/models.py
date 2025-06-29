@@ -107,8 +107,8 @@ class Order(models.Model):
     event_type = models.CharField(max_length=100, help_text="e.g., Birthday, Wedding, Anniversary, etc.")
     
     # Pricing and Status
-    estimated_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
-    final_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True)
+    estimated_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True, help_text="Estimated price in SEK")
+    final_price = models.DecimalField(max_digits=8, decimal_places=2, null=True, blank=True, help_text="Final price in SEK")
     status = models.CharField(max_length=20, choices=ORDER_STATUS, default='pending')
     
     # Timestamps
