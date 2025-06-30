@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anabel Sweets - JavaScript Test Runner</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #FB6F92;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .test-section {
+            margin-bottom: 30px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        .test-button {
+            background-color: #FB6F92;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 10px 5px;
+        }
+        .test-button:hover {
+            background-color: #d63384;
+        }
+        .test-results {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 6px;
+            margin-top: 15px;
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 14px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .success {
+            color: #28a745;
+        }
+        .error {
+            color: #dc3545;
+        }
+        .info {
+            color: #17a2b8;
+        }
+        .test-description {
+            color: #666;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧪 Anabel Sweets - JavaScript Test Suite</h1>
+        
+        <div class="test-section">
+            <h3>Order Form Interactive Features</h3>
+            <div class="test-description">
+                Tests the JavaScript functionality in the cake order form, including:
+                <ul>
+                    <li>Flavor selection and preview updates</li>
+                    <li>Custom flavor toggle functionality</li>
+                    <li>Form validation requirements</li>
+                    <li>Date validation structure</li>
+                    <li>Responsive design elements</li>
+                </ul>
+            </div>
+            <button class="test-button" onclick="runOrderFormTests()">Run Order Form Tests</button>
+            <div id="order-form-results" class="test-results" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>All JavaScript Tests</h3>
+            <div class="test-description">
+                Run all JavaScript tests for the application in one go.
+            </div>
+            <button class="test-button" onclick="runAllTests()">Run All Tests</button>
+            <div id="all-tests-results" class="test-results" style="display: none;"></div>
+        </div>
+
+        <div class="test-section">
+            <h3>Test Information</h3>
+            <div class="test-description">
+                <p><strong>Test Coverage:</strong></p>
+                <ul>
+                    <li>✅ Flavor Selection Functionality</li>
+                    <li>✅ Custom Flavor Toggle</li>
+                    <li>✅ Form Validation</li>
+                    <li>✅ Date Validation Structure</li>
+                    <li>✅ Flavor Preview Update</li>
+                    <li>✅ Responsive Design Elements</li>
+                </ul>
+                <p><strong>Total Tests:</strong> 6 JavaScript tests</p>
+                <p><strong>Test Environment:</strong> Browser-based with mock DOM</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="tests.js"></script>
+    <script>
+        function runOrderFormTests() {
+            const resultsDiv = document.getElementById('order-form-results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = 'Running tests...\n';
+            
+            // Capture console output
+            const originalLog = console.log;
+            let testOutput = '';
+            console.log = function(...args) {
+                testOutput += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            try {
+                const success = runJavaScriptTests();
+                resultsDiv.innerHTML = testOutput;
+                resultsDiv.className = success ? 'test-results success' : 'test-results error';
+            } catch (error) {
+                resultsDiv.innerHTML = `Error running tests: ${error.message}`;
+                resultsDiv.className = 'test-results error';
+            }
+            
+            // Restore console.log
+            console.log = originalLog;
+        }
+
+        function runAllTests() {
+            const resultsDiv = document.getElementById('all-tests-results');
+            resultsDiv.style.display = 'block';
+            resultsDiv.innerHTML = 'Running all tests...\n';
+            
+            // Capture console output
+            const originalLog = console.log;
+            let testOutput = '';
+            console.log = function(...args) {
+                testOutput += args.join(' ') + '\n';
+                originalLog.apply(console, args);
+            };
+            
+            try {
+                const success = runJavaScriptTests();
+                resultsDiv.innerHTML = testOutput;
+                resultsDiv.className = success ? 'test-results success' : 'test-results error';
+            } catch (error) {
+                resultsDiv.innerHTML = `Error running tests: ${error.message}`;
+                resultsDiv.className = 'test-results error';
+            }
+            
+            // Restore console.log
+            console.log = originalLog;
+        }
+
+        // Auto-run tests when page loads (optional)
+        window.addEventListener('load', function() {
+            console.log('JavaScript test runner loaded successfully!');
+            console.log('Click the buttons above to run tests.');
+        });
+    </script>
+</body>
+</html> 

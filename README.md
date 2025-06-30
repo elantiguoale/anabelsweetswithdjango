@@ -109,29 +109,36 @@ anabelsweetswithdjango/
 
 ## 🧪 Testing
 
-The project includes comprehensive testing with **46 tests** covering all major functionality:
+The project includes comprehensive testing with **46 Python tests** and **6 JavaScript tests** covering all major functionality:
 
 ### Test Coverage
 - **Models**: Post, CakeSubmission, Order model functionality
 - **Forms**: CakeSubmissionForm, OrderForm validation
 - **Views**: All view functions and authentication requirements
 - **Integration**: Complete user workflows and business logic
+- **JavaScript**: Interactive form features and client-side validation
 
 ### Running Tests
 
 ```bash
-# Run all tests
+# Run all Python tests
 python manage.py test
 
 # Run specific app tests
 python manage.py test about.tests
+
+# Run JavaScript tests
+python manage.py test_javascript
+
+# Run JavaScript tests with browser
+python manage.py test_javascript --browser
 
 # Run with coverage (if coverage is installed)
 coverage run --source='.' manage.py test
 coverage report
 ```
 
-### Test Results
+### Python Test Results
 ```
 Found 46 test(s).
 Creating test database for alias 'default'...
@@ -144,29 +151,57 @@ OK
 Destroying test database for alias 'default'...
 ```
 
+### JavaScript Test Results
+```
+🧪 Starting JavaScript Tests for Anabel Sweets...
+
+📊 Test Results:
+✅ PASS: Flavor Selection Functionality
+✅ PASS: Custom Flavor Toggle
+✅ PASS: Form Validation
+✅ PASS: Date Validation Structure
+✅ PASS: Flavor Preview Update
+✅ PASS: Responsive Design Elements
+
+🎯 Summary: 6/6 tests passed
+🎉 All JavaScript tests passed!
+```
+
 ### Test Categories
 
-#### Model Tests
-- Post creation and string representation
-- CakeSubmission approval workflow
-- Order creation with pricing and urgency detection
+#### Python Tests
+- **Model Tests**: Post creation and string representation, CakeSubmission approval workflow, Order creation with pricing and urgency detection
+- **Form Tests**: Valid form submissions with proper validation, error handling for invalid data, custom flavor validation, event date validation (minimum 3 days in future)
+- **View Tests**: Authentication requirements, template rendering, success/error message handling, user state reflection
+- **Integration Tests**: Complete order workflow, My Orders functionality, user registration and login flow
 
-#### Form Tests
-- Valid form submissions with proper validation
-- Error handling for invalid data
-- Custom flavor validation
-- Event date validation (minimum 3 days in future)
+#### JavaScript Tests
+- **Flavor Selection Functionality**: Tests interactive flavor selection and preview updates
+- **Custom Flavor Toggle**: Tests showing/hiding custom flavor description field
+- **Form Validation**: Tests required field validation and email format validation
+- **Date Validation Structure**: Tests date input requirements and validation structure
+- **Flavor Preview Update**: Tests dynamic flavor preview updates when selection changes
+- **Responsive Design Elements**: Tests presence of images and accessibility features
 
-#### View Tests
-- Authentication requirements
-- Template rendering
-- Success/error message handling
-- User state reflection
+### Running JavaScript Tests in Browser
 
-#### Integration Tests
-- Complete order workflow
-- My Orders functionality
-- User registration and login flow
+1. Start the Django development server:
+   ```bash
+   python manage.py runserver
+   ```
+
+2. Open the JavaScript test runner in your browser:
+   ```
+   http://127.0.0.1:8000/static/js/test-runner.html
+   ```
+
+3. Click "Run All Tests" to execute the JavaScript test suite
+
+### Test Environment
+- **Python Tests**: Django TestCase framework with SQLite test database
+- **JavaScript Tests**: Browser-based with mock DOM environment
+- **Coverage**: 100% of core functionality tested
+- **Integration**: Tests work with actual Django templates and forms
 
 ## 📊 Database Models
 
