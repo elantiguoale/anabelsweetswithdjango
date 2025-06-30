@@ -26,7 +26,7 @@ from about import views as about_views
 
 urlpatterns = [
     path('', about_views.about, name='home'),  # Home page at root URL
-    path('about/', about_views.about, name='about'),
+    path('about/', include('about.urls')),  # Include all about app URLs
     path('accounts/', include('accounts.urls')),
     path('admin/', admin.site.urls),
 ]
