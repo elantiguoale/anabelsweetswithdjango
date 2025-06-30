@@ -8,4 +8,5 @@ urlpatterns = [
     path('submit-cake/', views.submit_cake, name='submit_cake'),
     path('order/', views.order_cake, name='order_cake'),
     path('my-orders/', views.my_orders, name='my_orders'),
+    path('delete-order/<int:order_id>/', views.delete_order, name='delete_order'),
 ]

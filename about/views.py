@@ -1,8 +1,10 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 from .models import CakeSubmission, Order
 from .forms import CakeSubmissionForm, OrderForm
 
@@ -68,3 +70,22 @@ def my_orders(request):
         'orders': user_orders,
         'user_email': request.user.email
     })
+
+@login_required
+def delete_order(request, order_id):
+    """
+    Allow users to delete their own orders
+    """
+    order = get_object_or_404(Order, id=order_id)
+    
+    # Check if the order belongs to the logged-in user
+    if order.customer_email != request.user.email:
+        messages.error(request, "You can only delete your own orders.")
+        return redirect('my_orders')
+    
+    if request.method == 'POST':
+        order.delete()
+        messages.success(request, "Order deleted successfully!")
+        return redirect('my_orders')
+    
+    return render(request, 'about/delete_order.html', {'order': order})
