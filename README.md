@@ -248,60 +248,35 @@ Destroying test database for alias 'default'...
 
 ## 🚀 Deployment
 
-The application is ready for deployment to various cloud platforms. See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed instructions.
+### Heroku Deployment
 
-### Quick Deployment Options
+1. **Install Heroku CLI**
+2. **Create Heroku app**
+   ```bash
+   heroku create your-app-name
+   ```
 
-#### Heroku (Recommended)
-```bash
-# Install Heroku CLI and login
-heroku login
+3. **Set environment variables**
+   ```bash
+   heroku config:set SECRET_KEY=your-production-secret-key
+   heroku config:set DATABASE_URL=your-postgresql-url
+   heroku config:set DEBUG=False
+   ```
 
-# Create app (if new)
-heroku create your-app-name
-
-# Add PostgreSQL
-heroku addons:create heroku-postgresql:mini
-
-# Set environment variables
-heroku config:set SECRET_KEY="your-production-secret-key"
-heroku config:set DEVELOPMENT="True"
-
-# Deploy
-git push heroku main
-heroku run python manage.py migrate
-heroku run python manage.py collectstatic --noinput
-heroku open
-```
-
-#### Render
-1. Connect GitHub repository to Render
-2. Create new Web Service
-3. Set environment variables
-4. Deploy automatically
-
-#### Railway
-1. Connect GitHub repository to Railway
-2. Add environment variables
-3. Automatic deployment
+4. **Deploy**
+   ```bash
+   git push heroku main
+   heroku run python manage.py migrate
+   heroku run python manage.py createsuperuser
+   ```
 
 ### Environment Variables for Production
 ```
 SECRET_KEY=your-production-secret-key
 DATABASE_URL=postgresql://user:password@host:port/database
-DEVELOPMENT=  # Leave empty for production
+DEBUG=False
 ALLOWED_HOSTS=your-domain.com,www.your-domain.com
 ```
-
-### Post-Deployment Checklist
-- [ ] Database migrations applied
-- [ ] Static files collected
-- [ ] Superuser created
-- [ ] All features tested
-- [ ] HTTPS enabled
-- [ ] Environment variables configured
-
-**For detailed deployment instructions, see [DEPLOYMENT.md](DEPLOYMENT.md)**
 
 ## 📝 Agile Methodology
 

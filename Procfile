@@ -1,1 +1,1 @@
-web: gunicorn sweets.wsgi
+web: gunicorn sweets.wsgi:application

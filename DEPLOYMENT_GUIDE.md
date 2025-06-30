@@ -1,80 +1,164 @@
-# Deployment Guide - Anabel Sweets
+# 🚀 Heroku Deployment Guide for Anabel Sweets
 
-## Static Files Issue Resolution
+## Prerequisites
+- Git installed
+- Python 3.11+ installed
+- Heroku account (free tier available)
 
-### Problem
-The website was loading without CSS, images, or styling - just plain text and buttons.
+## Step 1: Install Heroku CLI
 
-### Solution Applied
-1. **Added WhiteNoise Middleware**: Configured Django to serve static files in production
-2. **Updated Settings**: Modified `sweets/settings.py` to use WhiteNoise for static file serving
-3. **Updated Requirements**: Added `whitenoise==6.6.0` to `requirements.txt`
+### Windows (PowerShell)
+```powershell
+# Download and install from: https://devcenter.heroku.com/articles/heroku-cli
+# Or use winget:
+winget install --id=Heroku.HerokuCLI
+```
 
-### Changes Made
+### Alternative: Download from Website
+1. Go to: https://devcenter.heroku.com/articles/heroku-cli
+2. Download the Windows installer
+3. Run the installer and follow the prompts
 
-#### 1. Middleware Configuration (`sweets/settings.py`)
+## Step 2: Login to Heroku
+
+```bash
+heroku login
+```
+- This will open your browser
+- Click "Log in" to authorize Heroku CLI
+
+## Step 3: Create Heroku App
+
+```bash
+# Create a new Heroku app (replace 'your-app-name' with a unique name)
+heroku create your-app-name
+
+# Example:
+heroku create anabelsweets-bakery
+```
+
+**Important:** Note your app name! You'll need it for the next steps.
+
+## Step 4: Update Django Settings
+
+Edit `sweets/settings.py` and replace the placeholder with your actual app name:
+
 ```python
-MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',  # Added for static files
-    # ... other middleware
+ALLOWED_HOSTS = ['127.0.0.1',
+                'anabelsweets-91c553d97f87.herokuapp.com',
+                'your-actual-app-name.herokuapp.com',  # Replace this
+                'localhost']
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://8000-elantiguoal-anabelsweet-lpiv62gd258.ws-eu116.gitpod.io",
+    "https://anabelsweets-91c553d97f87.herokuapp.com/",
+    "https://your-actual-app-name.herokuapp.com"  # Replace this
 ]
 ```
 
-#### 2. Static Files Configuration
-```python
-STATIC_URL = 'static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+## Step 5: Set Environment Variables
 
-# Only use STATICFILES_DIRS in development
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / "staticfiles",  
-    ]
+```bash
+# Set your Django secret key
+heroku config:set SECRET_KEY="your-super-secret-key-here"
 
-# WhiteNoise configuration for static files
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+# Set development flag (optional, for debugging)
+heroku config:set DEVELOPMENT="True"
+
+# Example secret key (generate your own):
+heroku config:set SECRET_KEY="django-insecure-your-very-long-secret-key-here"
 ```
 
-#### 3. Requirements Update (`requirements.txt`)
+## Step 6: Add PostgreSQL Database
+
+```bash
+# Add PostgreSQL addon (free tier)
+heroku addons:create heroku-postgresql:mini
 ```
-whitenoise==6.6.0
+
+## Step 7: Deploy Your Code
+
+```bash
+# Add all files to git
+git add .
+
+# Commit changes
+git commit -m "Prepare for Heroku deployment"
+
+# Push to Heroku
+git push heroku main
 ```
 
-### How It Works
-- **WhiteNoise**: A Django app that serves static files directly from the application server
-- **Compression**: Automatically compresses CSS and JavaScript files for faster loading
-- **Caching**: Adds appropriate cache headers for better performance
-- **Production Ready**: Works seamlessly with Heroku and other cloud platforms
+## Step 8: Run Database Migrations
 
-### Verification Steps
-1. **Check Local Development**: Run `python manage.py runserver` - should work without errors
-2. **Check Heroku Deployment**: Visit your Heroku app URL - should now show styled pages
-3. **Verify Static Files**: CSS, images, and JavaScript should load properly
+```bash
+# Apply database migrations
+heroku run python manage.py migrate
 
-### Expected Results
-- ✅ Website loads with full styling and CSS
-- ✅ Images display correctly
-- ✅ Navigation and buttons are properly styled
-- ✅ Responsive design works on mobile devices
-- ✅ Font Awesome icons display correctly
+# Create a superuser (optional)
+heroku run python manage.py createsuperuser
+```
 
-### Troubleshooting
-If static files still don't load:
-1. Clear browser cache (Ctrl+F5 or Cmd+Shift+R)
-2. Check browser developer tools for 404 errors on static files
-3. Verify Heroku deployment completed successfully
-4. Check Heroku logs for any errors
+## Step 9: Test Your Deployment
 
-### Files Modified
-- `sweets/settings.py` - Added WhiteNoise middleware and configuration
-- `requirements.txt` - Added whitenoise dependency
+```bash
+# Open your app in browser
+heroku open
 
-### Deployment Status
-- ✅ Changes committed to Git
-- ✅ Changes pushed to GitHub
-- ✅ Heroku should auto-deploy from GitHub
-- 🔄 Verify deployment on Heroku URL
+# Or visit: https://your-app-name.herokuapp.com
+```
+
+## Step 10: Verify Everything Works
+
+1. **Home Page**: Should load without errors
+2. **Navigation**: All links should work
+3. **Forms**: Test order form and registration
+4. **Admin**: Visit `/admin/` and login
+5. **Static Files**: Images and CSS should load
+
+## Troubleshooting
+
+### If you get errors:
+
+1. **Check logs:**
+   ```bash
+   heroku logs --tail
+   ```
+
+2. **Common issues:**
+   - **Static files not loading**: Run `heroku run python manage.py collectstatic --noinput`
+   - **Database errors**: Check if migrations ran: `heroku run python manage.py migrate`
+   - **App not found**: Verify your app name in settings.py
+
+3. **Restart the app:**
+   ```bash
+   heroku restart
+   ```
+
+## Environment Variables Summary
+
+Your app needs these environment variables set in Heroku:
+- `SECRET_KEY`: Your Django secret key
+- `DATABASE_URL`: Automatically set by PostgreSQL addon
+- `DEVELOPMENT`: Set to "True" for debugging (optional)
+
+## Final Steps
+
+1. **Update your README** with the live URL
+2. **Test all functionality** on the live site
+3. **Share your deployed app** with others!
+
+## Your Live App URL
+
+Once deployed, your app will be available at:
+**https://your-app-name.herokuapp.com**
+
+## Need Help?
+
+- **Heroku Documentation**: https://devcenter.heroku.com/
+- **Django on Heroku**: https://devcenter.heroku.com/articles/django-app-configuration
+- **Check logs**: `heroku logs --tail`
 
 ---
-*This guide documents the static files fix applied to resolve the unstyled website issue.* 
+
+**Congratulations!** 🎉 Your Django bakery app is now live on the internet! 
