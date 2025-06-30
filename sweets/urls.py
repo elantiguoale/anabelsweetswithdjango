@@ -20,10 +20,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from about import views as about_views
 
-
-### What used to be
-# from about.views import about_me
-
 urlpatterns = [
     path('', about_views.about, name='home'),  # Home page at root URL
     path('about/', include('about.urls')),  # Include all about app URLs
@@ -34,4 +30,4 @@ urlpatterns = [
 # Serve static files in development
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) 
