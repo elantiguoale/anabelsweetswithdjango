@@ -1,131 +1,282 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Anabel Sweets - Django Bakery Website
 
-Welcome Miguel Hernandez,
+![Anabel Sweets](staticfiles/images/cakeland.png)
 
-This is the Code Institute student template for Gitpod. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.
+A professional Django web application for a bakery business, featuring user authentication, cake ordering, and a community wall of fame for cake submissions.
 
-You can safely delete this README.md file or change it for your own project. Please do read it at least once, though! It contains some important information about Gitpod and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **June 18, 2024**
+## 🎂 Features
 
-## Gitpod Reminders
+### Core Functionality
+- **User Authentication**: Registration, login, logout, and profile management
+- **Cake Ordering System**: Complete order form with flavors, sizes, and pricing in SEK
+- **Wall of Fame**: Community-driven cake photo submissions with approval workflow
+- **My Orders**: Customer order history and tracking
+- **Responsive Design**: Mobile-friendly interface with modern UI
 
-To run a frontend (HTML, CSS, Javascript only) application in Gitpod, in the terminal, type:
+### Technical Features
+- **Role-based Access Control**: Different permissions for customers and admins
+- **CRUD Operations**: Full create, read, update, delete functionality
+- **Form Validation**: Comprehensive client and server-side validation
+- **Admin Interface**: Full Django admin integration for all models
+- **Database Models**: Custom models for Posts, Cake Submissions, and Orders
 
-`python3 -m http.server`
+## 🛠️ Technologies Used
 
-A blue button should appear to click: _Make Public_,
+- **Backend**: Django 4.2.16, Python 3.13
+- **Database**: SQLite (development), PostgreSQL (production ready)
+- **Frontend**: HTML5, CSS3, JavaScript
+- **Authentication**: Django's built-in authentication system
+- **Testing**: Django TestCase, 46 comprehensive tests
+- **Version Control**: Git & GitHub
+- **Deployment**: Heroku-ready configuration
 
-Another blue button should appear to click: _Open Browser_.
-
-To run a backend Python file, type `python3 app.py` if your Python file is named `app.py`, of course.
-
-A blue button should appear to click: _Make Public_,
-
-Another blue button should appear to click: _Open Browser_.
-
-By Default, Gitpod gives you superuser security privileges. Therefore, you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
-
-To log into the Heroku toolbelt CLI:
-
-1. Log in to your Heroku account and go to *Account Settings* in the menu under your avatar.
-2. Scroll down to the *API Key* and click *Reveal*
-3. Copy the key
-4. In Gitpod, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
-
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you, so do not share it. If you accidentally make it public, you can create a new one with _Regenerate API Key_.
-
-### Connecting your Mongo database
-
-- **Connect to Mongo CLI on a IDE**
-- navigate to your MongoDB Clusters Sandbox
-- click **"Connect"** button
-- select **"Connect with the MongoDB shell"**
-- select **"I have the mongo shell installed"**
-- choose **mongosh (2.0 or later)** for : **"Select your mongo shell version"**
-- choose option: **"Run your connection string in your command line"**
-- in the terminal, paste the copied code `mongo "mongodb+srv://<CLUSTER-NAME>.mongodb.net/<DBname>" --apiVersion 1 --username <USERNAME>`
-  - replace all `<angle-bracket>` keys with your own data
-- enter password _(will not echo **\*\*\*\*** on screen)_
-
-------
-
-## Release History
-
-We continually tweak and adjust this template to help give you the best experience. Here is the version history:
-
-**June 18, 2024,** Add Mongo back into template
-
-**June 14, 2024,** Temporarily remove Mongo until the key issue is resolved
-
-**May 28 2024:** Fix Mongo and Links installs
-
-**April 26 2024:** Update node version to 16
-
-**September 20 2023:** Update Python version to 3.9.17.
-
-**September 1 2021:** Remove `PGHOSTADDR` environment variable.
-
-**July 19 2021:** Remove `font_fix` script now that the terminal font issue is fixed.
-
-**July 2 2021:** Remove extensions that are not available in Open VSX.
-
-**June 30 2021:** Combined the P4 and P5 templates into one file, added the uptime script. See the FAQ at the end of this file.
-
-**June 10 2021:** Added: `font_fix` script and alias to fix the Terminal font issue
-
-**May 10 2021:** Added `heroku_config` script to allow Heroku API key to be stored as an environment variable.
-
-**April 7 2021:** Upgraded the template for VS Code instead of Theia.
-
-**October 21 2020:** Versions of the HTMLHint, Prettier, Bootstrap4 CDN and Auto Close extensions updated. The Python extension needs to stay the same version for now.
-
-**October 08 2020:** Additional large Gitpod files (`core.mongo*` and `core.python*`) are now hidden in the Explorer, and have been added to the `.gitignore` by default.
-
-**September 22 2020:** Gitpod occasionally creates large `core.Microsoft` files. These are now hidden in the Explorer. A `.gitignore` file has been created to make sure these files will not be committed, along with other common files.
-
-**April 16 2020:** The template now automatically installs MySQL instead of relying on the Gitpod MySQL image. The message about a Python linter not being installed has been dealt with, and the set-up files are now hidden in the Gitpod file explorer.
-
-**April 13 2020:** Added the _Prettier_ code beautifier extension instead of the code formatter built-in to Gitpod.
-
-**February 2020:** The initialisation files now _do not_ auto-delete. They will remain in your project. You can safely ignore them. They just make sure that your workspace is configured correctly each time you open it. It will also prevent the Gitpod configuration popup from appearing.
-
-**December 2019:** Added Eventyret's Bootstrap 4 extension. Type `!bscdn` in a HTML file to add the Bootstrap boilerplate. Check out the <a href="https://github.com/Eventyret/vscode-bcdn" target="_blank">README.md file at the official repo</a> for more options.
-
-------
-
-## FAQ about the uptime script
-
-**Why have you added this script?**
-
-It will help us to calculate how many running workspaces there are at any one time, which greatly helps us with cost and capacity planning. It will help us decide on the future direction of our cloud-based IDE strategy.
-
-**How will this affect me?**
-
-For everyday usage of Gitpod, it doesn’t have any effect at all. The script only captures the following data:
-
-- An ID that is randomly generated each time the workspace is started.
-- The current date and time
-- The workspace status of “started” or “running”, which is sent every 5 minutes.
-
-It is not possible for us or anyone else to trace the random ID back to an individual, and no personal data is being captured. It will not slow down the workspace or affect your work.
-
-**So….?**
-
-We want to tell you this so that we are being completely transparent about the data we collect and what we do with it.
-
-**Can I opt out?**
-
-Yes, you can. Since no personally identifiable information is being captured, we'd appreciate it if you let the script run; however if you are unhappy with the idea, simply run the following commands from the terminal window after creating the workspace, and this will remove the uptime script:
+## 📋 Project Structure
 
 ```
-pkill uptime.sh
-rm .vscode/uptime.sh
+anabelsweetswithdjango/
+├── about/                 # Main app with cake functionality
+│   ├── models.py         # Post, CakeSubmission, Order models
+│   ├── views.py          # All view logic
+│   ├── forms.py          # Form definitions and validation
+│   ├── tests.py          # Comprehensive test suite
+│   └── templates/        # HTML templates
+├── accounts/             # Authentication app
+│   ├── views.py          # User registration, login, profile
+│   └── templates/        # Auth templates
+├── sweets/               # Main Django project
+│   ├── settings.py       # Django configuration
+│   └── urls.py           # URL routing
+├── staticfiles/          # Static assets
+│   ├── css/             # Stylesheets
+│   └── images/          # Cake images and icons
+├── media/               # User-uploaded content
+└── templates/           # Base templates
 ```
 
-**Anything more?**
+## 🚀 Installation & Setup
 
-Yes! We'd strongly encourage you to look at the source code of the `uptime.sh` file so that you know what it's doing. As future software developers, it will be great practice to see how these shell scripts work.
+### Prerequisites
+- Python 3.8+
+- pip
+- Git
+
+### Local Development Setup
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/elantiguoale/anabelsweetswithdjango.git
+   cd anabelsweetswithdjango
+   ```
+
+2. **Create virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables**
+   Create a `.env` file in the root directory:
+   ```
+   SECRET_KEY=your-secret-key-here
+   DATABASE_URL=sqlite:///db.sqlite3
+   DEBUG=True
+   ```
+
+5. **Run migrations**
+   ```bash
+   python manage.py makemigrations
+   python manage.py migrate
+   ```
+
+6. **Create superuser (optional)**
+   ```bash
+   python manage.py createsuperuser
+   ```
+
+7. **Run the development server**
+   ```bash
+   python manage.py runserver
+   ```
+
+8. **Access the application**
+   - Main site: http://127.0.0.1:8000/
+   - Admin panel: http://127.0.0.1:8000/admin/
+
+## 🧪 Testing
+
+The project includes comprehensive testing with **46 tests** covering all major functionality:
+
+### Test Coverage
+- **Models**: Post, CakeSubmission, Order model functionality
+- **Forms**: CakeSubmissionForm, OrderForm validation
+- **Views**: All view functions and authentication requirements
+- **Integration**: Complete user workflows and business logic
+
+### Running Tests
+
+```bash
+# Run all tests
+python manage.py test
+
+# Run specific app tests
+python manage.py test about.tests
+
+# Run with coverage (if coverage is installed)
+coverage run --source='.' manage.py test
+coverage report
+```
+
+### Test Results
+```
+Found 46 test(s).
+Creating test database for alias 'default'...
+System check identified no issues (0 silenced).
+..............................................
+----------------------------------------------------------------------
+Ran 46 tests in 25.716s
+
+OK
+Destroying test database for alias 'default'...
+```
+
+### Test Categories
+
+#### Model Tests
+- Post creation and string representation
+- CakeSubmission approval workflow
+- Order creation with pricing and urgency detection
+
+#### Form Tests
+- Valid form submissions with proper validation
+- Error handling for invalid data
+- Custom flavor validation
+- Event date validation (minimum 3 days in future)
+
+#### View Tests
+- Authentication requirements
+- Template rendering
+- Success/error message handling
+- User state reflection
+
+#### Integration Tests
+- Complete order workflow
+- My Orders functionality
+- User registration and login flow
+
+## 📊 Database Models
+
+### Post Model
+- Blog posts with author, content, and status management
+- Draft/Published workflow
+
+### CakeSubmission Model
+- User-submitted cake photos
+- Approval workflow (Pending/Approved/Rejected)
+- Admin notes for internal use
+
+### Order Model
+- Complete cake ordering system
+- Customer information and contact details
+- Cake specifications (flavor, size, design)
+- Event details and pricing in SEK
+- Order status tracking
+
+## 🎨 User Interface
+
+### Design Features
+- **Responsive Layout**: Works on all device sizes
+- **Modern UI**: Clean, professional design with pink color scheme
+- **Interactive Elements**: Hover effects and smooth transitions
+- **Accessibility**: Proper alt text and semantic HTML
+
+### Pages
+1. **Home/About**: Introduction and cake showcase
+2. **Order Cake**: Comprehensive order form with flavor preview
+3. **Wall of Fame**: Approved cake submissions from community
+4. **Submit Cake**: User cake submission form (login required)
+5. **My Orders**: Customer order history (login required)
+6. **Authentication**: Registration, login, and profile pages
+
+## 🔐 Security Features
+
+- **CSRF Protection**: All forms protected against CSRF attacks
+- **Authentication**: Secure login/logout system
+- **Authorization**: Role-based access control
+- **Form Validation**: Server-side validation for all inputs
+- **Environment Variables**: Sensitive data stored in environment variables
+- **No Hardcoded Secrets**: All secrets managed through environment variables
+
+## 🚀 Deployment
+
+### Heroku Deployment
+
+1. **Install Heroku CLI**
+2. **Create Heroku app**
+   ```bash
+   heroku create your-app-name
+   ```
+
+3. **Set environment variables**
+   ```bash
+   heroku config:set SECRET_KEY=your-production-secret-key
+   heroku config:set DATABASE_URL=your-postgresql-url
+   heroku config:set DEBUG=False
+   ```
+
+4. **Deploy**
+   ```bash
+   git push heroku main
+   heroku run python manage.py migrate
+   heroku run python manage.py createsuperuser
+   ```
+
+### Environment Variables for Production
+```
+SECRET_KEY=your-production-secret-key
+DATABASE_URL=postgresql://user:password@host:port/database
+DEBUG=False
+ALLOWED_HOSTS=your-domain.com,www.your-domain.com
+```
+
+## 📝 Agile Methodology
+
+This project was developed using Agile methodology with:
+
+- **User Stories**: Documented requirements and acceptance criteria
+- **GitHub Projects**: Kanban board for task management
+- **Iterative Development**: Features developed in sprints
+- **Continuous Testing**: Tests written alongside feature development
+- **Version Control**: Regular commits with descriptive messages
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 👨‍💻 Author
+
+**Miguel Hernandez**
+- GitHub: [@elantiguoale](https://github.com/elantiguoale)
+- Project: [Anabel Sweets Django](https://github.com/elantiguoale/anabelsweetswithdjango)
+
+## 🙏 Acknowledgments
+
+- Code Institute for the learning framework
+- Django community for excellent documentation
+- Anabel for the bakery business inspiration
 
 ---
 
-Happy coding!
+**Note**: This is a student project developed for educational purposes. The bakery business "Anabel Sweets" is fictional. 
