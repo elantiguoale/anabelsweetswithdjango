@@ -31,7 +31,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-# Serve media files during development
+# Serve static files in development
 if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+# Serve static files in production (for Heroku)
+if not settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
