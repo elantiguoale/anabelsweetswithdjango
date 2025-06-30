@@ -412,6 +412,7 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 - Code Institute for the learning framework
 - Django community for excellent documentation
 - Anabel for the bakery business inspiration
+- **AI Assistance**: This project was developed with the help of AI coding assistants for guidance, code review, and problem-solving throughout the development process.
 
 ---
 
