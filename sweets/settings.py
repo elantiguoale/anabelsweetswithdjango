@@ -131,10 +131,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Only use STATICFILES_DIRS in development
-if DEBUG:
-    STATICFILES_DIRS = [BASE_DIR / "static"]  # Source static assets
-
 # Media files (User uploaded content)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
