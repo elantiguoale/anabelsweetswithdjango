@@ -11,7 +11,7 @@ def about(request):
     return render(request, "about/about_me.html")
 
 def wall_of_fame(request):
-    cakes = CakeSubmission.objects.filter(approval_status='approved').order_by('-submission_date')
+    cakes = CakeSubmission.objects.filter(approval_status='approved').order_by('-submission_date')  # type: ignore
     return render(request, 'about/wall_of_fame.html', {'cakes': cakes})
 
 @login_required
@@ -62,7 +62,7 @@ def my_orders(request):
     View for authenticated users to see their order history
     """
     # Get orders where the customer email matches the logged-in user's email
-    user_orders = Order.objects.filter(customer_email=request.user.email).order_by('-order_date')
+    user_orders = Order.objects.filter(customer_email=request.user.email).order_by('-order_date')  # type: ignore
     
     return render(request, 'about/my_orders.html', {
         'orders': user_orders,

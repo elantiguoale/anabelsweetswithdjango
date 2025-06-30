@@ -1,0 +1,192 @@
+[MASTER]
+# Add any Python module names here to whitelist them for autodoc.
+ignore=CVS
+
+# Use multiple processes to speed up Pylint.
+jobs=0
+
+# List of plugins (as comma separated values of python modules names) to load,
+# usually to register additional checkers.
+load-plugins=
+
+# Use a separate configuration file to find the root directory of the project.
+# See the documentation for more details.
+#rcfile=
+
+# Python code to execute, usually for sys.path manipulation such as
+# pygtk.require().
+#init-hook=
+
+# Add files or directories to the blacklist. They should be base names, not
+# paths.
+ignore-patterns=
+
+# Pickle collected data for later comparisons.
+persistent=yes
+
+# List which checkers you want to disable. This can be useful if you
+# are using a checker as a main checker on a previous line.
+#disable=
+
+# Use multiple processes to speed up Pylint.
+jobs=0
+
+[MESSAGES CONTROL]
+# Disable specific warnings that are false positives for Django
+disable=C0111,C0103,C0303,W0611,W0621,W0703,R0903,R0913,R0914,R0915,W0612,W0613,W0622,W0702,W0704,W0614,W0621,W0622,W0703,W0704,W0611,W0612,W0613,W0614,W0621,W0622,W0702,W0703,W0704,R0903,R0913,R0914,R0915,C0111,C0103,C0303,W0611,W0621,W0703,R0903,R0913,R0914,R0915,W0612,W0613,W0622,W0702,W0704,W0614,W0621,W0622,W0703,W0704,W0611,W0612,W0613,W0614,W0621,W0622,W0702,W0703,W0704,R0903,R0913,R0914,R0915
+
+[REPORTS]
+# Set the output format. Available formats are text, parseable, colorized, msvs
+# (visual studio) and html. You can also give a reporter class, eg
+# mypackage.mymodule.MyReporterClass.
+output-format=text
+
+# Put messages in a separate file for each module / package specified on the
+# command line instead of printing them on stdout. Reports (if any) will be
+# written in a file name "pylint_global.[txt|html]".
+files-output=no
+
+# Tells whether to display a full report or only the messages
+reports=no
+
+# Python expression which should return a note less than 10 (10 is the highest
+# note). You have access to the variables errors warning, statement which
+# respectively contain the number of errors / warnings messages and the total
+# number of statements analyzed. This is used by the global evaluation report
+# (RP0004).
+evaluation=10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)
+
+# Template used to display messages. This is a python new-style format string
+# used to format the message information. See doc for all details
+#msg-template=
+
+# Add a comment according to your evaluation note. This is used by the global
+# evaluation report (RP0004).
+comment=no
+
+[BASIC]
+# Regular expression which should only match function or class names. You may
+# want to change the function regexp in order to disallow certain functions or
+# class names.  The default regexp allows alpha and '_' char, plus the
+# possibility to add a number suffix in order to allow "kill" to be used
+# ("kill" would be matched, the regexp is from the start of the name to the
+# end of it): (^[a-zA-Z_][a-zA-Z0-9_]*$)
+function-rgx=[a-zA-Z_][a-zA-Z0-9_]{2,50}$
+# Regular expression which should only match correct class names
+class-rgx=[a-zA-Z_][a-zA-Z0-9_]+$
+# Regular expression which should only match correct module names
+module-rgx=(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$
+# Regular expression which should only match correct method names
+method-rgx=[a-zA-Z_][a-zA-Z0-9_]{2,50}$
+# Regular expression which should only match correct instance attribute names
+attr-rgx=[a-zA-Z_][a-zA-Z0-9_]{2,50}$
+# Regular expression which should only match correct argument names
+argument-rgx=[a-zA-Z_][a-zA-Z0-9_]{2,50}$
+# Regular expression which should only match correct variable names
+variable-rgx=[a-zA-Z_][a-zA-Z0-9_]{2,50}$
+# Regular expression which should only match correct list comprehension /
+# generator expression variable names
+inlinevar-rgx=[A-Za-z_][A-Za-z0-9_]*$
+# Regular expression which should only match correct class attribute names
+class-attribute-rgx=([A-Za-z_][A-Za-z0-9_]{2,50}|(__.*__))$
+# Regular expression which should only match correct const names
+const-rgx=(([A-Z_][A-Z0-9_]*)|(__.*__))$
+# Regular expression which should only match correct names for dummy variables
+dummy-vars-rgx=_|dummy
+# Good variable names which should always be accepted, separated by a comma
+good-names=i,j,k,ex,Run,_,id
+# Bad variable names which should always be refused, separated by a comma
+bad-names=foo,bar,baz,toto,tutu,tata
+# Name of the style checker to use
+name-format=snake_case
+
+[FORMAT]
+# Maximum number of characters on a single line.
+max-line-length=100
+
+# Regexp for a line that is allowed to be longer than the limit.
+ignore-long-lines=^\s*(# )?<?https?://\S+>?$
+# Allow the body of an if to be on the same line as the test if there is no
+# else.
+single-line-if-stmt=no
+# List of optional constructs for which whitespace checking is disabled
+no-space-check=trailing-comma,dict-separator
+# Maximum number of lines in a module
+max-module-lines=1000
+# String used as indentation unit. This is usually " " (4 spaces) or "\t" (1
+# tab).
+indent-string='    '
+
+[MISCELLANEOUS]
+# List of note tags to take into consideration.  Empty to consider all.
+notes=
+
+[SIMILARITIES]
+# Minimum lines number of a similarity.
+min-similarity-lines=4
+# Ignore imports when computing similarities.
+ignore-imports=yes
+
+[TYPECHECK]
+# List of module names for which member attributes should not be checked
+# (useful for modules/projects where namespaces are manipulated during runtime
+# and thus existing member attributes cannot be deduced by static analysis. It
+# supports qualified module names, as well as Unix pattern matching.
+ignored-modules=numpy,tensorflow,torch,cv2,PIL,django.db.models
+# List of classes names for which member attributes should not be checked
+# (useful for classes with attributes dynamically set). This supports can work
+# with qualified names.
+ignored-classes=SQLObject,SQLAlchemy,django.db.models.Model,django.db.models.Manager
+# List of members which are set dynamically and missed by pylint inference
+# system, and so shouldn't trigger E1101 when accessed. Python regular
+# expressions are supported.
+generated-members=REQUEST,acl_users,aq_parent,"[a-zA-Z]+_set{1,2}",save,delete
+
+[VARIABLES]
+# List of additional names considered to be builtins
+additional-builtins=
+# Regular expression which should only match function or class names which
+# require docstrings.
+docstring-min-length=-1
+
+[CLASSES]
+# List of method names used to declare (i.e. assign) instance attributes.
+defining-attr-methods=__init__,__new__,setUp
+# List of valid names for the first argument in a class method.
+valid-classmethod-first-arg=cls
+# List of valid names for the first argument in a metaclass class method.
+valid-metaclass-classmethod-first-arg=mcs
+
+[DESIGN]
+# Maximum number of arguments for function / method
+max-args=5
+# Maximum number of locals for function / method body
+max-locals=15
+# Maximum number of return / yield for function / method body
+max-returns=6
+# Maximum number of statements in function / method body
+max-statements=50
+# Maximum number of parents for a class (see R0901)
+max-parents=7
+# Maximum number of public methods for a class (see R0904)
+max-public-methods=20
+# Maximum number of public methods for a class (see R0904)
+max-attributes=7
+
+[IMPORTS]
+# Deprecated modules which should not be used, separated by a comma
+deprecated-modules=regsub,TERMIOS,Bastion,rexec
+# Create a graph of every (i.e. internal and external) dependencies in the
+# given file (report RP0402 must not be disabled)
+import-graph=
+# Create a graph of external dependencies in the given file (report RP0402 must
+# not be disabled)
+ext-import-graph=
+# Create a graph of internal dependencies in the given file (report RP0402 must
+# not be disabled)
+int-import-graph=
+
+[EXCEPTIONS]
+# Exceptions that will emit a warning when being caught. Defaults to
+# "Exception"
+overgeneral-exceptions=Exception 
