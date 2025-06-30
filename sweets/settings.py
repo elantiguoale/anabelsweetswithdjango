@@ -85,12 +85,21 @@ WSGI_APPLICATION = 'sweets.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-DATABASES = {'default' : dj_database_url.parse(os.environ.get("DATABASE_URL"))}
+# Use PostgreSQL from environment variable, fallback to SQLite for local development
+DATABASE_URL = os.environ.get("DATABASE_URL")
+if DATABASE_URL:
+    DATABASES = {'default': dj_database_url.parse(DATABASE_URL)}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+        }
+    }
 
 CSRF_TRUSTED_ORIGINS = [
     "https://8000-elantiguoal-anabelsweet-lpiv62gd258.ws-eu116.gitpod.io",
-    "https://anabelsweets-91c553d97f87.herokuapp.com/",
-    "https://your-app-name.herokuapp.com"  # Update this with your actual app name
+    "https://anabelsweets-91c553d97f87.herokuapp.com",
 ]
 
 # Password validation
@@ -129,9 +138,8 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 STATICFILES_DIRS = [
-    BASE_DIR / "staticfiles",  
+    BASE_DIR / 'static',
 ]
 
 # Media files (User uploaded content)
