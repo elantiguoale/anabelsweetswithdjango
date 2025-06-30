@@ -20,6 +20,107 @@ A professional Django web application for a bakery business, featuring user auth
 - **Admin Interface**: Full Django admin integration for all models
 - **Database Models**: Custom models for Posts, Cake Submissions, and Orders
 
+## 🔄 How It Works
+
+### User Journey
+
+#### 1. **Browsing and Ordering**
+- **Home Page**: Visitors can browse cake flavors and learn about the bakery
+- **Order Process**: 
+  - Select cake flavor (Chocolate, Strawberry, Tiramisu, Oreo, Lime, Dulce de Leche, or Custom)
+  - Choose cake size (15cm, 20cm, 25cm, or 30cm)
+  - Describe desired design and special requests
+  - Set event date (minimum 3 days in advance)
+  - Provide contact information
+  - Submit order with estimated pricing in SEK
+
+#### 2. **User Registration and Authentication**
+- **Registration**: New users create accounts with email and password
+- **Login/Logout**: Secure authentication system
+- **Profile Management**: Users can view and manage their account information
+
+#### 3. **Community Features**
+- **Submit Cake Photos**: Logged-in users can submit their own cake creations
+- **Wall of Fame**: Approved cake submissions are displayed for community inspiration
+- **Approval Workflow**: Admin reviews and approves/rejects submissions
+
+#### 4. **Order Management**
+- **My Orders**: Customers can view their order history and status
+- **Order Tracking**: Real-time status updates (Pending, Confirmed, In Progress, Ready, Completed, Cancelled)
+- **Order Deletion**: Users can cancel orders from their account
+
+### Technical Workflow
+
+#### 1. **Data Flow**
+```
+User Input → Form Validation → Database Storage → Admin Review → Status Updates
+```
+
+#### 2. **Authentication Flow**
+```
+Registration → Email Verification → Login → Session Management → Protected Routes
+```
+
+#### 3. **Order Processing**
+```
+Order Form → Validation → Price Calculation → Database Storage → Admin Notification
+```
+
+#### 4. **Content Management**
+```
+User Submission → Admin Review → Approval/Rejection → Public Display
+```
+
+### Key Features Explained
+
+#### **Pricing System**
+- Base pricing by cake size
+- Custom flavor pricing calculated by admin
+- All prices displayed in Swedish Krona (SEK)
+- Estimated and final pricing fields
+
+#### **Urgency Detection**
+- Orders with event dates within 3 days are flagged as urgent
+- Automatic urgency calculation for admin prioritization
+
+#### **Form Validation**
+- **Client-side**: JavaScript validation for immediate feedback
+- **Server-side**: Django form validation for security
+- **Date validation**: Minimum 3 days advance notice required
+- **Email validation**: Proper email format verification
+
+#### **Responsive Design**
+- Mobile-first approach
+- Adaptive layouts for all screen sizes
+- Touch-friendly interface elements
+- Optimized images and loading
+
+#### **Security Measures**
+- CSRF protection on all forms
+- Authentication required for sensitive operations
+- Input sanitization and validation
+- Secure session management
+
+### Admin Workflow
+
+#### **Order Management**
+1. Review new orders in admin panel
+2. Update order status as work progresses
+3. Set final pricing and add admin notes
+4. Communicate with customers via email
+
+#### **Content Moderation**
+1. Review cake submissions in admin panel
+2. Approve or reject with admin notes
+3. Manage Wall of Fame content
+4. Monitor community submissions
+
+#### **User Management**
+1. View user accounts and activity
+2. Manage user permissions
+3. Handle customer support requests
+4. Monitor system usage
+
 ## 🛠️ Technologies Used
 
 - **Backend**: Django 4.2.16, Python 3.13
