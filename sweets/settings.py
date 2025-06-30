@@ -139,11 +139,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# Only set STATICFILES_DIRS if not in production
-if DEBUG:
-    STATICFILES_DIRS = [
-        BASE_DIR / 'static',
-    ]
+# Static files directories for development and production
+STATICFILES_DIRS = [
+    BASE_DIR / 'static',
+]
 
 # Media files (User uploaded content)
 MEDIA_URL = '/media/'
@@ -151,7 +150,13 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # Configure static files for production
 if not DEBUG:
-    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+    # Use WhiteNoise for static files in production
+    STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+    
+    # Add security headers
+    SECURE_BROWSER_XSS_FILTER = True
+    SECURE_CONTENT_TYPE_NOSNIFF = True
+    X_FRAME_OPTIONS = 'DENY'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
